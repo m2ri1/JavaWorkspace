@@ -1,4 +1,4 @@
-package chap_01;
+package chap01;
 
 public class _05_contants {
     public static void main(String[] args) {

@@ -1,4 +1,4 @@
-package chap_02;
+package chap02;
 
 public class _01_stringMethod {
     public static void main(String[] args) {

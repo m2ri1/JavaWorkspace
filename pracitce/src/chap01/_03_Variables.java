@@ -1,6 +1,4 @@
-package chap_01;
-
-import java.sql.SQLOutput;
+package chap01;
 
 public class _03_Variables {
     public static void main(String[] args) {

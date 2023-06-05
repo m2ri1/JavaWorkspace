@@ -1,4 +1,4 @@
-package chap_01;
+package chap01;
 
 public class Quiz_01_bus {
     public static void main(String[] args) {

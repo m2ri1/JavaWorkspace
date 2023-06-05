@@ -1,4 +1,4 @@
-package chap_01;
+package chap01;
 
 public class _06_Typecasting {
     public static void main(String[] args) {

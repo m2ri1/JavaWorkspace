@@ -1,4 +1,4 @@
-package chap_02;
+package chap02;
 
 public class Quiz_03_car {
 //    public static void main(String[] args) {
