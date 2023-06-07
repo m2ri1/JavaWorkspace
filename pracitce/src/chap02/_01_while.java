@@ -1,4 +1,4 @@
-package chap03;
+package chap02;
 public class _01_while {
     public static void main(String[] args) {
         int a = 0;
@@ -11,3 +11,4 @@ public class _01_while {
         }
     }
     }
+ㅌ
