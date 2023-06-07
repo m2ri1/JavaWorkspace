@@ -1,3 +1,4 @@
-# JavaWorkspace
+# JAVA
+### JavaWorkspace
 
-* java를 공부해보려고 합니다!
+* Java를 공부 합니다
