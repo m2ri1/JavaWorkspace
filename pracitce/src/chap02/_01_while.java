@@ -11,4 +11,3 @@ public class _01_while {
         }
     }
     }
-ㅌ
