@@ -10,5 +10,9 @@ public class UserDTO {
 
     private String ID, name, pwd;
 
+    UserDTO() {
+
+    }
+
 
 }
