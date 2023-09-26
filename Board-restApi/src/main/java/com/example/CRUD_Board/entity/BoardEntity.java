@@ -1,14 +1,13 @@
 package com.example.CRUD_Board.entity;
 
-import com.example.CRUD_Board.dto.BoardRequest;
+import com.example.CRUD_Board.dto.CreateBoardRequest;
+import com.example.CRUD_Board.dto.UpdateBoardRequest;
 import lombok.*;
 
 import javax.persistence.*;
 
 @Entity
 @Getter
-@Setter
-@Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Table(name = "crud_board")
@@ -22,17 +21,16 @@ public class BoardEntity {
     private String title;
     private String createdBy;
 
-    public BoardEntity(BoardRequest boardRequest) {
-        this.title = boardRequest.getTitle();
-        this.content = boardRequest.getContent();
-        this.createdBy = boardRequest.getCreatedBy();
+    public BoardEntity(CreateBoardRequest createBoardRequest) {
+        this.title = createBoardRequest.getTitle();
+        this.content = createBoardRequest.getContent();
+        this.createdBy = createBoardRequest.getCreatedBy();
 
     }
-
-    public void updateBoard(BoardRequest boardRequest) {
-        this.title = boardRequest.getTitle();
-        this.content = boardRequest.getContent();
-        this.createdBy = boardRequest.getCreatedBy();
+    public void updateBoard(UpdateBoardRequest updateBoardRequest) {
+        this.title = updateBoardRequest.getTitle();
+        this.content = updateBoardRequest.getContent();
+        this.createdBy = updateBoardRequest.getCreatedBy();
     }
 
 }

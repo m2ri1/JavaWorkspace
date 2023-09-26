@@ -1,50 +1,41 @@
 package com.example.CRUD_Board.controller;
 
-import com.example.CRUD_Board.dto.BoardRequest;
-import com.example.CRUD_Board.dto.BoardResponseCreate;
-import com.example.CRUD_Board.dto.BoardResponseRead;
-import com.example.CRUD_Board.dto.BoardResponseReadAll;
+import com.example.CRUD_Board.dto.*;
 import com.example.CRUD_Board.service.BoardService;
-import org.springframework.beans.factory.annotation.Autowired;
+import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.util.List;
 
 @RestController
 @RequestMapping("/board")
+@RequiredArgsConstructor
 public class BoardController {
-    @Autowired
     private final BoardService boardService;
 
-    public BoardController(BoardService boardService) {
-        this.boardService = boardService;
+    @PostMapping
+    public CreateBoardResponse creatBoard(@Valid @RequestBody CreateBoardRequest createBoardRequest) {
+        return boardService.createBoard(createBoardRequest);
     }
 
-    @PostMapping("")
-    public BoardResponseCreate creatBoard(@RequestBody BoardRequest boardRequest) {
-        return boardService.createBoard(boardRequest);
-    }
-
-    @GetMapping("/read")
-    public List<BoardResponseReadAll> readAllBoard() {
+    @GetMapping
+    public List<ReadAllBoardResponse> readAllBoard() {
         return boardService.readAllBoard();
     }
 
-
-    @GetMapping("/read/{id}")
-    public BoardResponseRead readBoard(@PathVariable Integer id) {
-
+    @GetMapping("{id}")
+    public ReadBoardResponse readBoard(@PathVariable Integer id) {
         return boardService.readBoard(id);
 
     }
 
-    @PostMapping("/update/{id}")
-    public Integer updateBoard(@PathVariable Integer id, @RequestBody BoardRequest boardRequest) {
-
-        return boardService.updateBoard(id, boardRequest);
+    @PatchMapping("{id}")
+    public Integer updateBoard(@PathVariable Integer id, @Valid @RequestBody UpdateBoardRequest updateBoardRequest) {
+        return boardService.updateBoard(id, updateBoardRequest);
     }
 
-    @DeleteMapping("/delete/{id}")
+    @DeleteMapping("{id}")
     public Integer deleteBoard(@PathVariable Integer id) {
         return boardService.deleteBoard(id);
     }

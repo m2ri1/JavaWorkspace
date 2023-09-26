@@ -1,63 +1,53 @@
 package com.example.CRUD_Board.service;
 
-import com.example.CRUD_Board.dto.BoardRequest;
-
-import com.example.CRUD_Board.dto.BoardResponseCreate;
-import com.example.CRUD_Board.dto.BoardResponseRead;
-import com.example.CRUD_Board.dto.BoardResponseReadAll;
+import com.example.CRUD_Board.dto.*;
 import com.example.CRUD_Board.entity.BoardEntity;
 import com.example.CRUD_Board.repository.BoardRepository;
-import lombok.AllArgsConstructor;
+import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.NoSuchElementException;
+import java.util.stream.Collectors;
 
 @Service
-@AllArgsConstructor
+@RequiredArgsConstructor
 public class BoardService {
     private final BoardRepository boardRepository;
 
-
-    public BoardResponseCreate createBoard(BoardRequest boardRequest) {
-        BoardEntity board = new BoardEntity(boardRequest);
+    @Transactional
+    public CreateBoardResponse createBoard(CreateBoardRequest createBoardRequest) {
+        BoardEntity board = new BoardEntity(createBoardRequest);
         boardRepository.save(board);
-        return new BoardResponseCreate(board);
+        return CreateBoardResponse.toDto(board);
     }
 
-    public BoardResponseRead readBoard(Integer id) {
-        BoardEntity board = boardRepository.findById(id).orElseThrow(() -> new NoSuchElementException("글을 찾을 수 없음"));
-
-        return new BoardResponseRead(board);
+    public ReadBoardResponse readBoard(Integer id) {
+        BoardEntity board = boardRepository.findById(id).orElseThrow(() -> new RuntimeException());
+        return ReadBoardResponse.toDto(board);
     }
 
-    public List<BoardResponseReadAll> readAllBoard() {
-        List<BoardEntity> boardList = boardRepository.findAll();
-        List<BoardResponseReadAll> BoardResponseReadAllList = new ArrayList<>();
-        for (BoardEntity board : boardList) {
-            BoardResponseReadAllList.add(
-                    new BoardResponseReadAll(board)
-            );
-        }
-        return BoardResponseReadAllList;
+
+    public List<ReadAllBoardResponse> readAllBoard() {
+        return boardRepository.findAll().stream()
+                .map(ReadAllBoardResponse::new)
+                .collect(Collectors.toList());
     }
 
     @Transactional
-    public Integer updateBoard(Integer id, BoardRequest boardRequest){
+    public Integer updateBoard(Integer id, UpdateBoardRequest updateBoardRequest) {
         BoardEntity board = boardRepository.findById(id).orElseThrow(
-                () -> new IllegalArgumentException("글을 찾을 수 없음"));
-        board.updateBoard(boardRequest);
+                () -> new RuntimeException());
+        board.updateBoard(updateBoardRequest);
         return board.getId();
 
     }
 
-        @Transactional
-        public Integer deleteBoard (Integer id){
+    @Transactional
+    public Integer deleteBoard(Integer id) {
 
-            boardRepository.deleteById(id);
-            return id;
-        }
-
+        boardRepository.deleteById(id);
+        return id;
     }
+
+}

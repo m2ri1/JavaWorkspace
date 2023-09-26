@@ -6,10 +6,10 @@ import lombok.NoArgsConstructor;
 
 @Getter
 @NoArgsConstructor
-public class BoardResponseReadAll {
+public class ReadAllBoardResponse {
     private String title;
     private String createdBy;
-    public BoardResponseReadAll(BoardEntity board) {
+    public ReadAllBoardResponse(BoardEntity board) {
         this.title = board.getTitle();
         this.createdBy = board.getContent();
     }

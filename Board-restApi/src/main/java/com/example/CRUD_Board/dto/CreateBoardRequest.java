@@ -3,17 +3,20 @@ package com.example.CRUD_Board.dto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
+
+import javax.validation.constraints.NotNull;
 
 @Getter
-@Setter
 @AllArgsConstructor
 @NoArgsConstructor
-public class BoardRequest {
+public class CreateBoardRequest {
 
+    @NotNull
     private String title;
 
+    @NotNull
     private String content;
 
+    @NotNull
     private String createdBy;
 }
