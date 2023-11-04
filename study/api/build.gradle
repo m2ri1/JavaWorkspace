@@ -1,0 +1,7 @@
+project(':api'){
+
+
+    dependencies {
+        api project(':core')
+    }
+}
