@@ -1,6 +1,5 @@
 package com.example.domain.entity;
 
-import com.example.core.dto.RequestDto;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
@@ -19,7 +18,10 @@ public class CrudEntity {
 
     private String message;
 
-    public CrudEntity(RequestDto requestDto) {
+/*    public CrudEntity(RequestDto requestDto) {
         this.message = message;
     }
+    public void updateCrudEntity(RequestDto requestDto) {
+        this.message = message;
+    }*/
 }

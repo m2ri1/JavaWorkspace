@@ -14,11 +14,32 @@ import javax.transaction.Transactional;
 public class CrudService{
 
     private final CrudRepository crudRepository;
-    @Transactional
+/*    @Transactional
     public ResponseDto create(RequestDto requestDto) {
         CrudEntity crudEntity = new CrudEntity(requestDto);
-        CrudRepository.save(crudEntity);
+        crudRepository.save(crudEntity);
         return ResponseDto.toDto(crudEntity);
+    }*/
+
+    public ResponseDto read(Integer id) {
+        CrudEntity crudEntity = crudRepository.findById(id).orElseThrow(() -> new RuntimeException());
+        return ResponseDto.toDto(crudEntity);
+    }
+
+/*
+    @Transactional
+    public Integer update(Integer id, RequestDto requestDto) {
+        CrudEntity crudEntity = crudRepository.findById(id).orElseThrow(
+                () -> new RuntimeException());
+        crudEntity.updateCrudEntity(requestDto);
+        return crudEntity.getId();
+    }
+*/
+
+    @Transactional
+    public Integer delete(Integer id) {
+        crudRepository.deleteById(id);
+        return id;
     }
 
 }

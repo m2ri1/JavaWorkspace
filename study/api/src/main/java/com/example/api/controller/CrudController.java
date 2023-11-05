@@ -18,7 +18,7 @@ public class CrudController {
         return crudService.create(requestDto);
     }
 
-/*    @GetMapping("{id}")
+    @GetMapping("{id}")
     public ResponseDto read(@PathVariable Integer id) {
         return crudService.read(id);
     }
@@ -31,5 +31,5 @@ public class CrudController {
     @DeleteMapping("{id}")
     public Integer delete(@PathVariable Integer id) {
         return crudService.delete(id);
-    }*/
+    }
 }
