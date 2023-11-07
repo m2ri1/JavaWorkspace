@@ -1,7 +1,0 @@
-project(':core'){
-
-    dependencies {
-       // api project(':domain')
-        implementation project(':domain')
-    }
-}

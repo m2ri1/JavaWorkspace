@@ -1,4 +1,0 @@
-rootProject.name = 'study'
-include 'core'
-include 'domain'
-include 'api'
