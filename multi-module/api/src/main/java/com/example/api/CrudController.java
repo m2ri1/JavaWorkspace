@@ -6,8 +6,9 @@ import com.example.core.dto.ResponseDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-@RestController("/demo")
+@RestController
 @RequiredArgsConstructor
+@RequestMapping("/demo")
 public class CrudController {
     private final CrudService crudService;
 
